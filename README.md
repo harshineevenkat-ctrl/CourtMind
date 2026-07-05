@@ -176,9 +176,9 @@ Frontend runs at: `http://localhost:5173`
 | Name | Role |
 |------|------|
 | Harshinee V | Backend + Cognee Integration |
-| Abhishek L | Frontend (React + Tailwind) |
-| [Teammate 3] | API Integration + Testing |
-| [Teammate 4] | Demo + Blog + Presentation |
+| Aarthi R | Frontend (React + Tailwind) |
+| MuthuLakshmi M | API Integration + Testing |
+| Malini Priya V | Demo + Blog + Presentation |
 
 ---
 
