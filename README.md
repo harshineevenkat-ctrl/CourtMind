@@ -184,7 +184,7 @@ Frontend runs at: `http://localhost:5173`
 
 ## 📝 Blog Post
 
-> Medium/Dev.to blog link here
+[> Medium/Dev.to blog link here](https://medium.com/@harshinee.venkat/courtmind-ai-giving-lawyers-a-memory-that-never-forgets-1232a84edd13)
 
 ---
 
