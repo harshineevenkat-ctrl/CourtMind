@@ -37,42 +37,11 @@ Upload case documents → CourtMind remembers everything permanently → Ask any
 
 ## 🏗️ System Architecture
 
-```
-┌─────────────────────────────────────────────────────┐
-│                     USER (Lawyer)                    │
-└───────────────────────┬─────────────────────────────┘
-                        │
-                        ▼
-┌─────────────────────────────────────────────────────┐
-│              FRONTEND (React + Tailwind)             │
-│   Sign In → Dashboard → Case View → Chat Interface  │
-└───────────────────────┬─────────────────────────────┘
-                        │ HTTP API calls
-                        ▼
-┌─────────────────────────────────────────────────────┐
-│              BACKEND (FastAPI + Python)              │
-│                                                      │
-│  POST /cases/{id}/upload  → cognee.remember()       │
-│  POST /cases/{id}/ask     → cognee.recall()         │
-│  POST /cases/{id}/improve → cognee.improve()        │
-│  DELETE /cases/{id}       → cognee.forget()         │
-└───────────────────────┬─────────────────────────────┘
-                        │
-                        ▼
-┌─────────────────────────────────────────────────────┐
-│           COGNEE MEMORY LAYER (Open Source)          │
-│                                                      │
-│  ┌─────────────┐    ┌──────────────────────────┐   │
-│  │ Vector Store │    │     Knowledge Graph       │   │
-│  │  (LanceDB)   │    │       (Ladybug/Kuzu)      │   │
-│  └─────────────┘    └──────────────────────────┘   │
-│                                                      │
-│  LLM: Groq (llama-3.3-70b-versatile)               │
-│  Embeddings: FastEmbed (local, no API key needed)   │
-└─────────────────────────────────────────────────────┘
-```
+### CourtMind AI Workflow
+![Workflow](./WorkFlow.png)
 
----
+### Full Architecture
+![Architecture](./Architecture.png)
 
 ## 🚀 Features
 
