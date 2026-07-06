@@ -98,29 +98,29 @@ async def improve_case(case_id: str):
 
 @app.post("/cases/{case_id}/contradictions")
 async def check_contradictions(case_id: str):
-    q1 = "What did the witness say in Hearing 1?"
-    q2 = "What did the witness say in Hearing 3?"
-
     try:
-        result1 = await cognee.recall(q1, datasets=[case_dataset(case_id)])
-        result2 = await cognee.recall(q2, datasets=[case_dataset(case_id)])
+        result1 = await cognee.recall(
+            "What did the witness say?", 
+            datasets=[case_dataset(case_id)]
+        )
+        result2 = await cognee.recall(
+            "What happened according to the documents?", 
+            datasets=[case_dataset(case_id)]
+        )
     except Exception:
-        raise HTTPException(status_code=404, detail=f"No memory found for case '{case_id}'. Upload a document first.")
+        raise HTTPException(status_code=404, detail="No memory found.")
 
     statement_a = extract_text(result1)
     statement_b = extract_text(result2)
 
     contradiction_result = detect_contradiction(statement_a, statement_b)
 
-    response = {
+    return {
         "case_id": case_id,
-        "hearing_1_statement": statement_a,
-        "hearing_3_statement": statement_b,
+        "statement_a": statement_a,
+        "statement_b": statement_b,
         "contradiction_check": contradiction_result
     }
-
-    print("RETURNING CONTRADICTIONS RESPONSE:", response)
-    return response
 
 
 @app.get("/cases/{case_id}/memory")
